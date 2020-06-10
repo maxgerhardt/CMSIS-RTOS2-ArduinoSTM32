@@ -1,7 +1,7 @@
 {
   "name": "CMSIS-RTOS2-ArduinoSTM32",
   "description": "CMSIS-RTOS2 library compatible with Arduino_Core_STM32",
-  "keywords": "",
+  "keywords": "rtos,cmsis,cmsis-rtos2",
   "authors": [
     {
       "name": "Arm Limited"
