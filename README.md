@@ -19,16 +19,22 @@ In your `setup()` function, you must initial the kernel, add all the threads (an
 This can be achieved by using a `setup()` function like
 
 ```cpp
+void example_thread_function(void* startArg) {
+	while(true) {
+		osDelay(1000);
+	}
+}
+
 void setup()
 {
 	Serial.begin(115200);
 
 	osKernelInitialize();
 
-  //add threads
+        //add threads
  	osThreadNew(example_thread_function, NULL, NULL);
 
-  //is kernel ready to run?
+        //is kernel ready to run?
 	if (osKernelGetState() == osKernelReady)
 	{
 		//then start it. will block eternally (or fatal error encountered)
