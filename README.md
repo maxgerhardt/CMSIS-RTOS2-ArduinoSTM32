@@ -68,3 +68,24 @@ Or, just make sure to ever only print from one thread if acquiring a mutex is to
 This library is only usable with PlatformIO, because a config file and Python script is needed to set up the include flags / folders **and** assemble the correct IRQ file for the Cortex M0, M3 or M4 processor. 
 
 I have not bothered to make this Arduino IDE compatible (yet..). 
+
+## Example project
+
+Just use a `platformio.ini` like 
+
+```
+[platformio]
+default_envs = nucleo_f103rb	
+
+[env]
+lib_deps = 
+	CMSIS-RTOS2-ArduinoSTM32=https://github.com/maxgerhardt/CMSIS-RTOS2-ArduinoSTM32.git
+
+; target a STM32F103RB chip
+[env:nucleo_f103rb]
+platform = ststm32
+board = nucleo_f103rb
+framework = arduino
+```
+
+and use the `.cpp` files from one of the examples. Change the `board` to your bidding -- all Cortex M0, M3 and M4 boards should work.
