@@ -1,0 +1,36 @@
+{
+  "name": "CMSIS-RTOS2-ArduinoSTM32",
+  "description": "CMSIS-RTOS2 library compatible with Arduino_Core_STM32",
+  "keywords": "",
+  "authors": [
+    {
+      "name": "Arm Limited"
+    },
+    {
+      "name": "Maximilian Gerhardt",
+      "maintainer": true
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxgerhardt/todo.git"
+  },
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "frameworks": "arduino",
+  "platforms": "ststm32",
+  "build": {
+    "libArchive": false,
+    "flags": [
+      "-I Include",
+      "-I RTX/Include",
+      "-I RTX/Include1",
+      "-I RTX/Config"
+    ],
+    "extraScript": "compile_correct_irq.py"
+  }, 
+  "examples": [
+    "[Ee]xamples/*/*.cpp",
+    "[Ee]xamples/*/*.ino"
+  ]
+}
