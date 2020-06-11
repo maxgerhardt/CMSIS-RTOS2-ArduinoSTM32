@@ -71,9 +71,17 @@ Or, just make sure to ever only print from one thread if acquiring a mutex is to
 
 ## Arduino IDE support?
 
-This library is only usable with PlatformIO, because a config file and Python script is needed to set up the include flags / folders **and** assemble the correct IRQ file for the Cortex M0, M3 or M4 processor. 
+This library is Arduino IDE compatible. Just download this repository as a ZIP archive and add it to the libraries as normal. Or, find your `C:\Users\<user>\AppData\Local\Arduino15\packages\STM32\hardware\stm32\1.9.0\libraries` folder and add this library as new folder directly.
 
-I have not bothered to make this Arduino IDE compatible (yet..). 
+Compilation and upload was tested with the latest STM32Duino version and Arduino IDE 1.8.10, newer versions should not be problem.
+
+## Will using this library mess up my `millis()` or PWM output?
+
+No, to the best of my knowledge. This library uses the default Systick implementation for Cortex-M type targets. The `Systick_Handler()` function is still implemented in the STM32Duino core and we are getting called as an optional hook function (`osSystickHandler()`), so nothing else should break and no other timer should be occupied which might disturb things.  
+
+## ARM Cortex-A and ARMv8 support? 
+
+Files refering to these architectures were temporarily delted to make compilation work for Cortex-M targets. Those can be readded at a later time.. Specifcially the files are the IRQ implementation files (see https://github.com/ARM-software/CMSIS_5/tree/develop/CMSIS/RTOS2/RTX/Source/GCC), the `handler.c` and the timer files `os_tick_gtim.c` and `os_tick_ptim.c`.
 
 ## Example project
 
