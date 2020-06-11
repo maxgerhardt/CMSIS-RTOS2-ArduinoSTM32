@@ -15,7 +15,7 @@
     "type": "git",
     "url": "https://github.com/maxgerhardt/CMSIS-RTOS2-ArduinoSTM32.git"
   },
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "Apache-2.0",
   "frameworks": "arduino",
   "platforms": "ststm32",
