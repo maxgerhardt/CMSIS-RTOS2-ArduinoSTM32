@@ -23,6 +23,11 @@
  * -----------------------------------------------------------------------------
  */
 
+#include "identify_cortex.h"
+
+/* only build for Cortex M3 */
+#if CORTEX_M_TYPE == CORTEX_M_TYPE_M3
+
 
         .file    "irq_cm3.S"
         .syntax  unified
@@ -144,3 +149,4 @@ osSystickHandler:
 
 
         .end
+#endif

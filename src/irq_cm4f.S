@@ -22,7 +22,10 @@
  *
  * -----------------------------------------------------------------------------
  */
+#include "identify_cortex.h"
 
+/* only build for Cortex M4F and related (attempt) */
+#if (CORTEX_M_TYPE == CORTEX_M_TYPE_M4F) || (CORTEX_M_TYPE == CORTEX_M_TYPE_M7) || (CORTEX_M_TYPE == CORTEX_M_TYPE_OTHER)
 
         .file    "irq_cm4f.S"
         .syntax  unified
@@ -159,3 +162,4 @@ osSystickHandler:
 
 
         .end
+#endif

@@ -22,7 +22,10 @@
  *
  * -----------------------------------------------------------------------------
  */
+#include "identify_cortex.h"
 
+/* only build for Cortex M0 / M0+ */
+#if CORTEX_M_TYPE == CORTEX_M_TYPE_M0_OR_M0PLUS
 
         .file    "irq_cm0.S"
         .syntax  unified
@@ -171,3 +174,4 @@ osSystickHandler:
 
 
         .end
+#endif
