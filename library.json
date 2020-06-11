@@ -21,12 +21,6 @@
   "platforms": "ststm32",
   "build": {
     "libArchive": false,
-    "flags": [
-      "-I Include",
-      "-I RTX/Include",
-      "-I RTX/Include1",
-      "-I RTX/Config"
-    ],
     "extraScript": "compile_correct_irq.py"
   }, 
   "examples": [
