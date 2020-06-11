@@ -13,7 +13,9 @@ if board_cpu == "cortex-m0":
     irq_file = "RTX/Source/GCC/irq_cm0.S"
 elif board_cpu == "cortex-m3":
     irq_file = "RTX/Source/GCC/irq_cm3.S"
-elif board_cpu == "cortex-m4":
+# cortex m7 is closer to cortex m4f.
+# validation pending: https://github.com/ARM-software/CMSIS_5/issues/943
+elif board_cpu == "cortex-m4" or board_cpu == "cortex-m7":
     irq_file = "RTX/Source/GCC/irq_cm4f.S"
 else: 
     sys.stderr.write("Cannot deduce correct IRQ source file for given build.cpu \"%s\". Build will fail.\n" % board_cpu)
