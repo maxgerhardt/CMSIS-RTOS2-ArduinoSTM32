@@ -89,8 +89,17 @@ static osStatus_t svcRtxKernelInitialize (void) {
   }
 #endif
 
+/*
+ * The way this structure is initialized with memset() is okay: it starts at offset
+ * where the .kernel member resides and initializes everything until the end of the osRtxInfo struct,
+ * thus going beyond the .kernel member. This is correct.
+ * Ignore this warning only for this line.
+ */
+#pragma GCC diagnostic ignored "-Warray-bounds"
   // Initialize osRtxInfo
   memset(&osRtxInfo.kernel, 0, sizeof(osRtxInfo) - offsetof(osRtxInfo_t, kernel));
+
+#pragma GCC diagnostic pop
 
   osRtxInfo.isr_queue.data = osRtxConfig.isr_queue.data;
   osRtxInfo.isr_queue.max  = osRtxConfig.isr_queue.max;
