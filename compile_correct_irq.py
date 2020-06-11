@@ -17,19 +17,24 @@ irq_files = [
 
 irq_file = None 
 if board_cpu == "cortex-m0": 
-    irq_file = "src/irq_cm0.S"
+    irq_file = "irq_cm0.S"
 elif board_cpu == "cortex-m3":
-    irq_file = "src/irq_cm3.S"
+    irq_file = "irq_cm3.S"
 # cortex m7 is closer to cortex m4f.
 # validation pending: https://github.com/ARM-software/CMSIS_5/issues/943
 elif board_cpu == "cortex-m4" or board_cpu == "cortex-m7":
-    irq_file = "src/irq_cm4f.S"
+    irq_file = "irq_cm4f.S"
 else: 
     sys.stderr.write("Cannot deduce correct IRQ source file for given build.cpu \"%s\". Build will fail.\n" % board_cpu)
     # default to Cortex M3..
-    irq_file = "src/irq_cm3.S"
+    irq_file = "irq_cm3.S"
 
 # build list of excluded IRQ files 
 excluded_irqs = ["-<%s>" % irq for irq in irq_files if irq != irq_file]
+
+#print("Excluded: %s " % str(excluded_irqs))
+new_src_filter = ["+<*>", "-<.git/>", "-<examples/>"] 
+new_src_filter.extend(excluded_irqs)
+
 # append it to the blacklist
-env.Append(SRC_FILTER=excluded_irqs)
+env.Replace(SRC_FILTER=new_src_filter)
